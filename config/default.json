@@ -1,6 +1,6 @@
 {
 	"mysql": {
-		"database": "petshop",
+		"database": "amorosine_team",
 		"user": "ong_amorosine",
 		"password": "amorosine",
 		"host:": "127.0.0.1"
