@@ -1,10 +1,17 @@
-const express = require("express")
-const bodyParser = require("body-parser")
-const config = require("config")
-const app = express()
+const customExpress = require('./config/customExpress')
+const conexao = require('./infrastructure/conexao')
+const Tabelas = require('./infrastructure/tabelas')
 
-app.use(bodyParser.json())
+conexao.connect(erro => {
+	if(erro) {
+		console.log(erro)
+	} else {
+		console.log('Banco de dados conectado')
 
-app.listen(config.get('api.port'), () => {
-  console.log("API running")
+		Tabelas.init(conexao)
+
+		const app = customExpress()
+
+		app.listen(3000, () => console.log('Servidor rodando'))
+	}
 })
