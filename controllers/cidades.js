@@ -5,8 +5,6 @@ module.exports = app => {
 
 	app.post('/cidades', (req, res) => {
 		const cidade = req.body
-		Cidade.adiciona(cidade)
-
-		res.status(200).send()
+		Cidade.adiciona(cidade, res)
 	})
 }

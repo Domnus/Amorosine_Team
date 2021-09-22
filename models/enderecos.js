@@ -1,14 +1,14 @@
 const conexao = require('../database/conexao')
 
 class Endereco {
-    adiciona(endereco) {
-        const sql = 'INSERTO INTO Enderecos SET ?'
+    adiciona(endereco, res) {
+        const sql = 'INSERT INTO Enderecos SET ?'
 
-        conexao.query(sql, endereco, (erro, resultados) => {
+        conexao.query(sql, endereco, (erro, resultado) => {
             if (erro) {
-                console.log(erro)
+                res.status(400).json(erro)
             } else {
-                console.log(resultados)
+                res.status(201).json(resultado)
             }
         })
     }

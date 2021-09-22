@@ -1,14 +1,14 @@
 const conexao = require('../database/conexao')
 
 class Cidade {
-	adiciona(cidade) {
+	adiciona(cidade, res) {
 		const sql = 'INSERT INTO Cidades SET ?'
 
-		conexao.query(sql, cidade, (erro, resultados) => {
+		conexao.query(sql, cidade, (erro, resultado) => {
 			if (erro) {
-				console.log(erro)
+				res.status(400).json(erro)
 			} else {
-				console.log(resultados)
+				res.status(201).json(resultado)
 			}
 		})
 	}

@@ -6,8 +6,6 @@ module.exports = app => {
     app.post('/enderecos', (req, res) => {
         const endereco = req.body
 
-        Endereco.adiciona(endereco)
-
-        res.status(200).send()
+        Endereco.adiciona(endereco, res)
     })
 }

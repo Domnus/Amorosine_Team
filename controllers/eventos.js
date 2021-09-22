@@ -6,8 +6,6 @@ module.exports = app => {
     app.post('/eventos', (req, res) => {
         const evento = req.body
 
-        Evento.adiciona(evento)
-
-        res.status(200).send()
+        Evento.adiciona(evento, res)
     })
 }

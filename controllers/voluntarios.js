@@ -6,8 +6,6 @@ module.exports = app => {
     app.post('/voluntarios', (req, res) => {
         const voluntario = req.body
 
-        Voluntario.adiciona(voluntario)
-
-        res.status(200).send()
+        Voluntario.adiciona(voluntario, res)
     })
 }

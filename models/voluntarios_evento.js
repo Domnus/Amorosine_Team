@@ -1,8 +1,9 @@
 const conexao = require('../database/conexao')
 
-class Voluntario {
+class Voluntarios_Evento {
     adiciona(voluntario, res) {
-        const sql = 'INSERT INTO Voluntarios SET ?'
+        const sql = 'INSERT INTO Voluntarios_Evento SET ?'
+
         conexao.query(sql, voluntario, (erro, resultado) => {
             if (erro) {
                 res.status(400).json(erro)
@@ -13,4 +14,4 @@ class Voluntario {
     }
 }
 
-module.exports = new Voluntario
+module.exports = new Voluntarios_Evento

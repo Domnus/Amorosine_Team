@@ -5,8 +5,6 @@ module.exports = app => {
 
 	app.post('/acoes', (req, res) => {
 		const acaoSocial = req.body
-		AcaoSocial.adiciona(acaoSocial)
-
-		res.status(200).send()
+		AcaoSocial.adiciona(acaoSocial, res)
 	})
 }

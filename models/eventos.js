@@ -1,13 +1,21 @@
 const conexao = require('../database/conexao')
+const moment = require('moment')
 
 class Evento {
-    adiciona(evento) {
+    adiciona(evento, res) {
+        if (evento.dataInicio !== '' && evento.dataFinal !== '') {
+            const dataInicio = moment(evento.dataInicio, 'DD/MM/YYYY').format('YYYY-MM-SS')
+            const dataFinal = moment(evento.dataFinal, 'DD/MM/YYYY').format('YYYY-MM-SS')
+        } 
+
+        const novoEvento = {...evento, dataInicio, dataFinal}
+
         const sql = 'INSERT INTO Eventos SET ?'
-        conexao.query(sql, evento, (erro, resultados) => {
+        conexao.query(sql, evento, (erro, resultado) => {
             if (erro) {
-                console.log(erro)
+                res.status(400).json(erro)
             } else {
-                console.log(resultados)
+                res.status(201).json(resultado)
             }
         })
     }
