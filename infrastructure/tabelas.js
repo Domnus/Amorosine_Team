@@ -5,6 +5,9 @@ class Tabelas {
 
 		this.criarAcoesSociais()
 		this.criarCidades()
+		this.criarEnderecos()
+		this.criarVoluntarios()
+		this.criarEventos()
 	}
 
 	criarAcoesSociais() {
@@ -31,7 +34,7 @@ class Tabelas {
 	}
 
 	criarEnderecos() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEnderecos` INT NOT NULL AUTO_INCREMENT, `idCidades` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL,`bairro` VARCHAR(45) NOT NULL,`complemento` VARCHAR(45) NULL,`CEP` VARCHAR(8) NOT NULL,PRIMARY KEY (`idEnderecos`, `idCidades`),INDEX `fk_Enderecos_Cidades1_idx` idCidades` ASC) VISIBLE,CONSTRAINT `fk_Enderecos_Cidades1`FOREIGN KEY (`idCidades`)REFERENCES `amorosine_team`.`Cidades` (`idCidades`)ON DELETE NO ACTION ON UPDATE NO ACTION) ENGINE = InnoDB;'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEnderecos` INT NOT NULL AUTO_INCREMENT, `idCidades` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL,`bairro` VARCHAR(45) NOT NULL, `complemento` VARCHAR(45) NULL, `CEP` VARCHAR(8) NOT NULL, PRIMARY KEY (`idEnderecos`, `idCidades`), INDEX `fk_Enderecos_Cidades1_idx` (`idCidades` ASC) VISIBLE, CONSTRAINT `fk_Enderecos_Cidades1` FOREIGN KEY (`idCidades`) REFERENCES `amorosine_team`.`Cidades` (`idCidades`)ON DELETE NO ACTION ON UPDATE NO ACTION) ENGINE = InnoDB;'
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {
