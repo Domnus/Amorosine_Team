@@ -1,7 +1,7 @@
 const Cidade = require('../models/cidades')
 
 module.exports = app => {
-	app.get('/acoes', (req, res) => res.send('Servidor rodando'))
+	app.get('/cidades', (req, res) => res.send('Rota cidades funcionando'))
 
 	app.post('/cidades', (req, res) => {
 		const cidade = req.body

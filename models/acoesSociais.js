@@ -1,4 +1,4 @@
-const conexao = require('../infrastructure/conexao')
+const conexao = require('../database/conexao')
 
 class AcaoSocial {
 	adiciona(acaoSocial) {
