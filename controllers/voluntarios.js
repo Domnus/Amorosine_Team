@@ -1,7 +1,15 @@
 const Voluntario = require('../models/voluntarios')
 
 module.exports = app => {
-    app.get('/voluntarios', (req, res) => {res.send('Rota voluntarios funcionando')})
+    app.get('/voluntarios', (req, res) => {
+        Voluntario.lista(res)
+    })
+
+    app.get('/voluntarios/:id', (req, res) => {
+        const id = req.params.id
+        Voluntario.busca(res, id)
+    })
+
 
     app.post('/voluntarios', (req, res) => {
         const voluntario = req.body
