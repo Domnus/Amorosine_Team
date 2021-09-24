@@ -4,10 +4,10 @@ const repositorio = require('../repositories/eventos')
 
 class Evento {
     constructor() {
-        this.dataInicioValida = ({dataAtual, dataInicio}) => moment(dataInicio).isSameOrAfter(dataAtual)
-        this.dataFinalValida = ({dataInicio, dataFinal}) => moment(dataFinal).isSameOrAfter(dataInicio)
+        this.dataInicioValida = ({ dataAtual, dataInicio }) => moment(dataInicio).isSameOrAfter(dataAtual)
+        this.dataFinalValida = ({ dataInicio, dataFinal }) => moment(dataFinal).isSameOrAfter(dataInicio)
         this.valida = parametros => this.validacoes.filter(campo => {
-            const {nome} = campo
+            const { nome } = campo
             const parametro = parametros[nome]
 
             return !campo.valido(parametro)
@@ -43,8 +43,8 @@ class Evento {
             const dataFinal = moment(evento.dataFinal, 'DD/MM/YYYY').format('YYYY-MM-DD')
 
             const parametros = {
-                dataInicio: {dataAtual, dataInicio},
-                dataFinal: {dataInicio, dataFinal}
+                dataInicio: { dataAtual, dataInicio },
+                dataFinal: { dataInicio, dataFinal }
             }
 
             var erros = this.valida(parametros)
@@ -56,9 +56,7 @@ class Evento {
             return new Promise((resolve, reject) => reject(erros))
         } else {
             return repositorio.adiciona(novoEvento)
-                .then((resultado) => {
-                    return novoEvento
-                })
+                .then((resultado) => { return novoEvento })
         }
     }
 
@@ -66,50 +64,47 @@ class Evento {
         return repositorio.lista()
     }
 
-    async busca(id) {
+    busca(id) {
         return repositorio.busca(id)
-  }
+    }
 
     async altera(id, valores) {
-        this.busca(id).then(resultado => {
-            const evento = resultado[0]
-            console.log(evento.dataInicio)
-            if (!valores.dataInicio && !valores.dataFinal) {
-                return new Promise((resolve, reject)=> reject('Nenhuma data foi informada'))
-            } else {
-                if (!valores.dataInicio){
-                    var dataInicio = evento.dataInicio 
-                } else if (!valores.dataFinal){
-                    var dataFinal = evento.dataFinal
+        if (!valores.dataInicio && !valores.dataFinal) {
+            return new Promise((resolve, reject) => reject('Nenhuma data foi informada'))
+        } else {
+                const resultado = await this.busca(id)
+                const evento = resultado[0]
+                if (!valores.dataInicio) {
+                    var dataInicio = moment(evento.dataInicio,).format('YYYY-MM-DD')
+                    var dataFinal = moment(valores.dataFinal, 'DD/MM/YYYY').format('YYYY-MM-DD')
+                } else if (!valores.dataFinal) {
+                    var dataFinal = moment(evento.dataFinal).format('YYYY-MM-DD')
+                    var dataInicio = moment(valores.dataInicio, 'DD/MM/YYYY').format('YYYY-MM-DD')
                 } else {
                     var dataInicio = moment(valores.dataInicio, 'DD/MM/YYYY').format('YYYY-MM-DD')
                     var dataFinal = moment(valores.dataFinal, 'DD/MM/YYYY').format('YYYY-MM-DD')
                 }
                 const dataAtual = moment().format('YYYY-MM-DD')
-                var novoValor = { ...valores, dataInicio, dataFinal }
-
                 const parametros = {
-                    dataInicio: {dataAtual, dataInicio},
-                    dataFinal: {dataInicio, dataFinal}
+                    dataInicio: { dataAtual, dataInicio },
+                    dataFinal: { dataInicio, dataFinal }
                 }
-
+            
                 var erros = this.valida(parametros)
                 var existemErros = erros.length
-            }         
+                var novoValor = { ...evento, dataInicio, dataFinal }
 
-            if (existemErros) {
-                return new Promise(erros)
-            } else {
-                return repositorio.altera(id, valores)
-                    .then(resultado => {
-                        return novoValor
-                    })
-            }
-        }).catch(erro => {return erro})
+                if (existemErros) {
+                    return new Promise((resolve, reject) => reject(erros))
+                } else {
+                    return repositorio.altera(id, novoValor).then(resultados => {return novoValor})
+                }
+        }
     }
 
+
     deleta(id, res) {
-        
+
         const sql = 'DELETE FROM Eventos WHERE idEvento = ?'
         conexao.query(sql, id, (erro, resultado) => {
             if (erro) {

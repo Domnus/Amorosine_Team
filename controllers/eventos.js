@@ -10,7 +10,10 @@ module.exports = app => {
     app.get('/eventos/:id', (req, res) => {
         const id = req.params.id
         Evento.busca(id)
-            .then(resultado => res.status(200).json(resultado))
+            .then(resultado => {
+                console.log(resultado)
+                res.status(200).json(resultado)
+            })
             .catch(erro => res.status(400).json(erro))
     })
 
@@ -27,7 +30,9 @@ module.exports = app => {
         const valores = req.body
 
         Evento.altera(id, valores)
-            .then(evento => res.status(200).json(evento))
+            .then(resolv => {
+                res.status(200).json(resolv)
+            })
             .catch(erro => res.status(400).json(erro))
     })
 

@@ -22,7 +22,7 @@ class Evento {
     altera(id, params) {
         const sql = 'UPDATE Eventos SET ? WHERE idEvento = ?'
 
-        return query(sql, [id, params])
+        return query(sql, [params, id])
     }
 }
 
