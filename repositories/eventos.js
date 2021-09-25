@@ -24,6 +24,12 @@ class Evento {
 
         return query(sql, [params, id])
     }
+
+    deleta(id) {
+        const sql = 'DELETE FROM Eventos WHERE idEvento = ?'
+
+        return query(sql, id)
+    }
 }
 
 module.exports = new Evento

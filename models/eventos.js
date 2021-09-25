@@ -1,4 +1,3 @@
-const conexao = require('../database/conexao')
 const moment = require('moment')
 const repositorio = require('../repositories/eventos')
 
@@ -102,20 +101,10 @@ class Evento {
         }
     }
 
-
-    deleta(id, res) {
-
-        const sql = 'DELETE FROM Eventos WHERE idEvento = ?'
-        conexao.query(sql, id, (erro, resultado) => {
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json(id)
-            }
-        })
-
+    async deleta(id) {
+        return repositorio.deleta(id).then(resultado => {return id})
+                                     .catch(erro => {return erro})
     }
 }
-
 
 module.exports = new Evento

@@ -1,16 +1,28 @@
-const conexao = require('../database/conexao')
-
+const repositorio = require('../repositories/acaoSocial')
 class AcaoSocial {
-	adiciona(acaoSocial, res) {
-		const sql = 'INSERT INTO AcoesSociais SET ?'
+	async adiciona(acaoSocial) {
+		return repositorio.adiciona(acaoSocial).then(resultados => {return acaoSocial})
+											   .catch(erros => {return erros})
+	}
 
-		conexao.query(sql, acaoSocial, (erro, resultado) => {
-			if (erro) {
-				res.status(400).json(erro)
-			} else {
-				res.status(201).json(resultado)
-			}
-		})
+	async lista() {
+		return repositorio.lista().then(resultado => {return resultado})
+							      .catch(erro => {return erro})
+	}
+
+	async busca(id) {
+		return repositorio.busca(id).then(resultado => {return resultado[0]})
+								    .catch(erro => {return erro})
+	}	
+
+	async altera(id, valores) {
+		return repositorio.altera(id, valores).then(resultado => {return valores})
+											  .catch(erro => {return erro})
+	}
+
+	async deleta(id) {
+		return repositorio.deleta(id).then(resultado => {return id})
+									 .catch(erro => {return erro})
 	}
 }
 
