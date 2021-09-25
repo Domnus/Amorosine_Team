@@ -1,5 +1,6 @@
 const conexao = require('../database/conexao')
 
+// FIXME
 class Voluntarios_Evento {
     adiciona(voluntario, res) {
         const sql = 'INSERT INTO Voluntarios_Evento SET ?'

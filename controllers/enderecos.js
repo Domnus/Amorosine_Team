@@ -1,5 +1,6 @@
 const Endereco = require('../models/enderecos')
 
+// FIXME
 module.exports = app => {
     app.get('/enderecos', (req, res) => res.send('Rota enderecos funcionando'))
 

@@ -1,4 +1,3 @@
-const conexao = require('../database/conexao')
 const query = require('../database/queries')
 
 class acaoSocial {
@@ -15,19 +14,19 @@ class acaoSocial {
 	}
 
 	busca(id) {
-		const sql = 'SELECT * FROM AcoesSociais WHERE idAcoesSociais = ?'
+		const sql = 'SELECT * FROM AcoesSociais WHERE idAcaoSocial = ?'
 
 		return query(sql, id)
 	}
 
 	altera(id, params) {
-		const sql = 'UPDATE AcoesSociais SET ? WHERE idAcoesSociais = ?'
+		const sql = 'UPDATE AcoesSociais SET ? WHERE idAcaoSocial = ?'
 
 		return query(sql, [params, id])
 	}
 
 	deleta(id) {
-		const sql = 'DELETE FROM AcoesSociais WHERE idAcoesSociais = ?'
+		const sql = 'DELETE FROM AcoesSociais WHERE idAcaoSocial = ?'
 
 		return query(sql, id)
 	}

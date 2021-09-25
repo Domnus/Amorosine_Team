@@ -4,6 +4,7 @@ const query = require('../database/queries')
 class Evento {
     adiciona(evento) {
         const sql = 'INSERT INTO Eventos SET ?'
+
         return query(sql, evento)
     }
 

@@ -55,7 +55,10 @@ class Evento {
             return new Promise((resolve, reject) => reject(erros))
         } else {
             return repositorio.adiciona(novoEvento)
-                .then((resultado) => { return novoEvento })
+                .then((resultado) => {
+                    const id = resultado.insertId
+                    return {id, ...novoEvento}
+                })
         }
     }
 

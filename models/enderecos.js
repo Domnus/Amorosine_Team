@@ -1,5 +1,6 @@
 const conexao = require('../database/conexao')
 
+// FIXME
 class Endereco {
     adiciona(endereco, res) {
         const sql = 'INSERT INTO Enderecos SET ?'

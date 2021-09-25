@@ -1,8 +1,11 @@
 const repositorio = require('../repositories/acaoSocial')
 class AcaoSocial {
 	async adiciona(acaoSocial) {
-		return repositorio.adiciona(acaoSocial).then(resultados => {return acaoSocial})
-											   .catch(erros => {return erros})
+		return repositorio.adiciona(acaoSocial).then(resultado => {
+			const id = resultado.insertId
+			return {id, ...acaoSocial}
+		})
+											   .catch(erro => {return erro})
 	}
 
 	async lista() {

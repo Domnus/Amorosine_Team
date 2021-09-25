@@ -12,7 +12,7 @@ class Tabelas {
 	}
 
 	criarAcoesSociais() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`AcoesSociais` (`idAcoesSociais` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(100) NOT NULL, `descricao` VARCHAR(250) NULL DEFAULT NULL, PRIMARY KEY (`idAcoesSociais`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`AcoesSociais` (`idAcaoSocial` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(100) NOT NULL, `descricao` VARCHAR(250) NULL DEFAULT NULL, PRIMARY KEY (`idAcaoSocial`)) ENGINE = InnoDB'
 
 		this.conexao.query(sql, (erro) => {
 			if(erro) {
@@ -24,7 +24,7 @@ class Tabelas {
 	}
 
 	criarCidades() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Cidades` (`idCidades` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(45) NOT NULL, `UF` VARCHAR(2) NOT NULL, PRIMARY KEY (`idCidades`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Cidades` (`idCidade` INT NOT NULL AUTO_INCREMENT, `nome` VARCHAR(45) NOT NULL, `UF` VARCHAR(2) NOT NULL, PRIMARY KEY (`idCidade`)) ENGINE = InnoDB'
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {
@@ -36,7 +36,7 @@ class Tabelas {
 	}
 
 	criarEnderecos() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEndereco` INT NOT NULL AUTO_INCREMENT, `idCidade` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL, `bairro` VARCHAR(45) NOT NULL, `complemento` VARCHAR(45) NULL DEFAULT NULL, `CEP` VARCHAR(8) NOT NULL, PRIMARY KEY (`idEndereco`, `idCidade`), INDEX `fk_Enderecos_Cidades1_idx` (`idCidade` ASC) VISIBLE, CONSTRAINT `fk_Enderecos_Cidades1` FOREIGN KEY (`idCidade`) REFERENCES `amorosine_team`.`Cidades` (`idCidades`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEndereco` INT NOT NULL AUTO_INCREMENT, `idCidade` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL, `bairro` VARCHAR(45) NOT NULL, `complemento` VARCHAR(45) NULL DEFAULT NULL, `CEP` VARCHAR(8) NOT NULL, PRIMARY KEY (`idEndereco`, `idCidade`), INDEX `fk_Enderecos_Cidades1_idx` (`idCidade` ASC) VISIBLE, CONSTRAINT `fk_Enderecos_Cidades1` FOREIGN KEY (`idCidade`) REFERENCES `amorosine_team`.`Cidades` (`idCidade`)) ENGINE = InnoDB'
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {
@@ -48,7 +48,7 @@ class Tabelas {
 	}
 
 	criarEventos() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Eventos` (`idEvento` INT NOT NULL AUTO_INCREMENT, `idAcaoSocial` INT NOT NULL, `idEndereco` INT NULL, `dataInicio` DATETIME NULL DEFAULT NULL, `dataFinal` DATETIME NULL DEFAULT NULL, PRIMARY KEY (`idEvento`, `idAcaoSocial`), INDEX `fk_AcoesSociais_has_Voluntarios_AcoesSociais0_idx` (`idAcaoSocial` ASC) VISIBLE, INDEX `fk_Evento_Enderecos1_idx` (`idEndereco` ASC) VISIBLE, CONSTRAINT `fk_AcoesSociais_has_Voluntarios_AcoesSociais1` FOREIGN KEY (`idAcaoSocial`) REFERENCES `amorosine_team`.`AcoesSociais` (`idAcoesSociais`) ON DELETE RESTRICT ON UPDATE RESTRICT, CONSTRAINT `fk_Evento_Enderecos1` FOREIGN KEY (`idEndereco`) REFERENCES `amorosine_team`.`Enderecos` (`idEndereco`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Eventos` (`idEvento` INT NOT NULL AUTO_INCREMENT, `idAcaoSocial` INT NOT NULL, `idEndereco` INT NULL, `dataInicio` DATETIME NULL DEFAULT NULL, `dataFinal` DATETIME NULL DEFAULT NULL, PRIMARY KEY (`idEvento`, `idAcaoSocial`), INDEX `fk_AcoesSociais_has_Voluntarios_AcoesSociais0_idx` (`idAcaoSocial` ASC) VISIBLE, INDEX `fk_Evento_Enderecos1_idx` (`idEndereco` ASC) VISIBLE, CONSTRAINT `fk_AcoesSociais_has_Voluntarios_AcoesSociais1` FOREIGN KEY (`idAcaoSocial`) REFERENCES `amorosine_team`.`AcoesSociais` (`idAcaoSocial`) ON DELETE RESTRICT ON UPDATE RESTRICT, CONSTRAINT `fk_Evento_Enderecos1` FOREIGN KEY (`idEndereco`) REFERENCES `amorosine_team`.`Enderecos` (`idEndereco`)) ENGINE = InnoDB'
 
 		 
 		this.conexao.query(sql, (erro) => {

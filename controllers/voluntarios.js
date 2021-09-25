@@ -1,5 +1,6 @@
 const Voluntario = require('../models/voluntarios')
 
+// FIXME
 module.exports = app => {
     app.get('/voluntarios', (req, res) => {
         Voluntario.lista(res)

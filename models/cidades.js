@@ -1,16 +1,45 @@
-const conexao = require('../database/conexao')
+const repositorio = require('../repositories/cidades')
 
+// FIXME
 class Cidade {
-	adiciona(cidade, res) {
-		const sql = 'INSERT INTO Cidades SET ?'
+	async adiciona(cidade) {
+		if ((cidade.UF).length > 2 || (cidade.UF).length < 2) {
+			return new Promise((resolv, reject) => reject('UF inválida'))
+		} else {
+			return repositorio.adiciona(cidade).then(resultado => {
+				const id = resultado.insertId
+				const novaCidade = {id, ...cidade}
+				return novaCidade
+			})
+		}
+	}
 
-		conexao.query(sql, cidade, (erro, resultado) => {
-			if (erro) {
-				res.status(400).json(erro)
-			} else {
-				res.status(201).json(resultado)
+	async lista() {
+		return repositorio.lista().then(resultado => {return resultado})
+						  		  .catch(erro => {return erro})
+	}
+
+	async busca(id) {
+		return repositorio.busca(id).then(resultado => {return resultado[0]})
+									.catch(erro => {return erro})
+	}
+
+	async altera(id, valores) {
+		if (valores.UF) {
+			if ((valores.UF).length > 2 || (valores.UF).length < 2) {
+				return new Promise((resolv, reject) => reject('UF inválida'))
 			}
+		}
+
+		return repositorio.altera(id, valores).then(resultado => {
+			return valores
 		})
+											  .catch(erro => {return erro})
+	}
+
+	async deleta(id) {
+		return repositorio.deleta(id).then(resultado => {return id})
+									 .catch(erro => {return erro})
 	}
 }
 
