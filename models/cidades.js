@@ -1,16 +1,22 @@
 const repositorio = require('../repositories/cidades')
 
-// FIXME
 class Cidade {
 	async adiciona(cidade) {
-		if ((cidade.UF).length > 2 || (cidade.UF).length < 2) {
-			return new Promise((resolv, reject) => reject('UF inválida'))
-		} else {
-			return repositorio.adiciona(cidade).then(resultado => {
+		if (cidade.UF) {
+			if ((cidade.UF).length === 2) {
+				return repositorio.adiciona(cidade).then(resultado => {
 				const id = resultado.insertId
 				const novaCidade = {id, ...cidade}
 				return novaCidade
-			})
+				})
+			} else {
+				console.log(cidade.UF)
+				if ((cidade.UF) === undefined || (cidade.UF).length !== 2) {
+					return new Promise((resolv, reject) => reject('UF inválida'))
+				}
+			}
+		} else {
+			return new Promise((resolv, reject) => reject('Nenhuma UF foi informada'))
 		}
 	}
 

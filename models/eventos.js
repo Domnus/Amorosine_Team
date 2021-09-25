@@ -56,6 +56,8 @@ class Evento {
         } else {
             return repositorio.adiciona(novoEvento)
                 .then((resultado) => {
+                    console.log(resultado)
+                    console.log(novoEvento)
                     const id = resultado.insertId
                     return {id, ...novoEvento}
                 })

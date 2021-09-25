@@ -1,17 +1,27 @@
-const conexao = require('../database/conexao')
-
+const repositorio = require('../repositories/voluntarios_eventos')
 // FIXME
 class Voluntarios_Evento {
-    adiciona(voluntario, res) {
-        const sql = 'INSERT INTO Voluntarios_Evento SET ?'
-
-        conexao.query(sql, voluntario, (erro, resultado) => {
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                res.status(201).json(resultado)
-            }
+    async adiciona(voluntarios_evento) {
+        return repositorio.adiciona(voluntarios_evento).then(resultado => {
+            const id = resultado.insertId
+            return {id, ...voluntarios_evento}
         })
+    }
+    
+    async lista() {
+        return repositorio.lista().then(resultado => {return resultado})
+    }
+
+    async altera(id, valores){
+        return repositorio.altera(id, valores).then(resultado => {return {id,  ...valores}})
+    }
+
+    async busca(id) {
+        return repositorio.busca(id).then(resultado => {return resultado})
+    }
+
+    async deleta(id) {
+        return repositorio.deleta(id).then(resultado => {return resultado})
     }
 }
 

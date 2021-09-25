@@ -1,4 +1,3 @@
-const conexao = require('../database/conexao')
 const query = require('../database/queries')
 
 class Evento {

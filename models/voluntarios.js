@@ -1,42 +1,41 @@
-const conexao = require('../database/conexao')
-
+const repositorio = require("../repositories/voluntarios")
 // FIXME
 class Voluntario {
-    adiciona(voluntario, res) {
-        const sql = 'INSERT INTO Voluntarios SET ?'
-        conexao.query(sql, voluntario, (erro, resultado) => {
-            if (erro) {
-                res.status(400).json(erro)
+    async adiciona(voluntario){
+        if(voluntario.CPF){
+            if ((voluntario.CPF).length !== 11){
+                return new Promise((resolve,reject) => reject("CPF inválido"))
             } else {
-                res.status(201).json(resultado)
+                return repositorio.adiciona(voluntario).then(resultado => {
+                    const id = resultado.insertId
+                    return {id, ...voluntario}
+                })
             }
-        })
+        } else {
+            return new Promise((resolve, reject) => reject("CPF não informado"))
+        }
     }
 
-    lista(res) {
-        const sql = 'SELECT * FROM Voluntarios'
-
-        conexao.query(sql, (erro, resultado) => {
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json(resultado)
-            }
-        })
+    async lista(){
+        return repositorio.lista().then(resultado => {return resultado})
+    }
+    
+    async busca(id){
+        return repositorio.busca(id).then(resultado => {return resultado})
     }
 
-    busca(res, id) {
-        const sql = 'SELECT * FROM Voluntarios WHERE idVoluntario = ?'
+    async altera(id, valores){
+        if(valores.CPF){
+            if ((valores.CPF).length !== 11)
+                return new Promise((resolve,reject) => reject("CPF inválido"))
+        } else {
+            return new Promise((resolve, reject) => reject("CPF não informado"))
+        }
+        return repositorio.altera(id, valores).then(resultado => {return {id,...valores}})
+    } 
 
-        conexao.query(sql, id, (erro, resultado) => {
-            const voluntario = resultado[0]
-            if (erro) {
-                res.status(400).json(erro)
-            } else {
-                res.status(200).json(voluntario)
-            }
-        })
+    async deleta(id){
+        return repositorio.deleta(id).then(resultado => {return resultado.insertId})
     }
 }
-
 module.exports = new Voluntario

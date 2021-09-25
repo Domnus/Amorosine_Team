@@ -11,6 +11,7 @@ module.exports = app => {
 		AcaoSocial.busca(id).then(resultado => res.status(200).json(resultado))
 						  .catch(erro => res.status(400).json(erro))
 	})
+
 	app.post('/acoes', (req, res) => {
 		const acaoSocial = req.body
 		AcaoSocial.adiciona(acaoSocial).then(resultado => res.status(200).json(resultado))
