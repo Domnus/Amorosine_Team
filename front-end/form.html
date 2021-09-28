@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
     <title>Formulário | Voluntário</title>
     <style>
         body{
@@ -20,6 +21,7 @@
             padding: 15px;
             border-radius: 15px;
             width: 20%;
+            padding-bottom:10px;
         }
         fieldset{
             border: 3px solid rgb(235, 4, 4);
@@ -73,10 +75,13 @@
             font-size: 17px;
             cursor: pointer;
             border-radius: 10px;
+            
         }
         #submit:hover{
             background-image: linear-gradient(to right, rgb(53, 196, 68), rgb(86, 90, 94));
+            
         }
+
     </style>
 </head>
 <body>
@@ -87,8 +92,15 @@
                 <br>
                 <div class="inputBox">
                     <input type="text" name="nome" id="nome" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome completo:</label>
+                    <label for="nome" class="labelInput">Nome:</label>
                 </div>
+                
+                <br><br>
+                <div class="inputBox">
+                    <input type="text" name="nome" id="nome" class="inputUser" required>
+                    <label for="nome" class="labelInput">Sobrenome:</label>
+                </div>
+
                 <br><br>
                 <div class="inputBox">
                     <input type="text" name="email" id="email" class="inputUser" required>
