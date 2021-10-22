@@ -10,27 +10,6 @@ font-family: Arial, Helvetica, sans-serif;
 background-image: linear-gradient(to right, rgb(243, 237, 237), rgb(219, 164, 164));
 } 
 
-@media screen and (min-width:900px) {
-	form {
-		width: 50vw;
-		margin: 5vh auto 0 auto;
-	}
-}
-
-@media screen and (min-width:1000px) {
-	form {
-		width: 40vw;
-		margin: 5vh auto 0 auto;
-	}
-}
-
-@media screen and (max-width:900px) {
-	form {
-		width: 80vw;
-		margin: 5vh auto 0 auto;
-	}
-}
-
 form {color: #FFFFFF;
 	background-color: rgba(143, 112, 112, 0.6);
 	border-radius: 15px;
@@ -44,7 +23,8 @@ form label {
 }
 
 fieldset {
-	border: 3px solid var(--themeRed)
+	border: 3px solid var(--themeRed);
+	margin-bottom: 10px;
 }
 
 .titulo {
@@ -60,7 +40,7 @@ fieldset {
 	position: relative;
 }
 
-.inputUser{
+.inputUser:required, .inputUser:optional, .labelInput:empty{
 	background: none;
 	border: none;
 	border-bottom: 1px solid white;
@@ -74,14 +54,14 @@ fieldset {
 
 .labelInput{
 	position: absolute;
-	top: -10px;
+	top: 10px;
 	left: 0px;
 	pointer-events: none;
 	transition: .5s;
 }
 
 .inputUser:focus + .labelInput,
-.inputUser:valid + .labelInput{
+.inputUser:not(:placeholder-shown) + .labelInput{
 	top: -30px;
 	font-size: 12px;
 	color: rgb(209, 186, 186);
@@ -110,4 +90,46 @@ fieldset {
 
 .submit:hover{
 	background: var(--themeRed);
+}
+
+/* Scroll bar */
+
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color:var(--themeRed);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--gray);
+    border-radius: 10px;
+}
+
+/* Responsividade */
+
+@media screen and (min-width:900px) {
+	form {
+		width: 50vw;
+		margin: 1vh auto 1vh auto;
+	}
+}
+
+@media screen and (min-width:1000px) {
+	form {
+		width: 40vw;
+		margin: 1vh auto 1vh auto;
+	}
+}
+
+@media screen and (max-width:900px) {
+	form {
+		width: 80vw;
+		margin: 1vh auto 1vh auto;
+	}
 }

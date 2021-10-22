@@ -371,22 +371,7 @@ header nav ul li a:hover
     transition: 0.2s; 
 }
 
-::-webkit-scrollbar
-{
-    width: 12px;
-}
 
-::-webkit-scrollbar-track
-{
-    background-color:var(--themeRed);
-    border-radius: 1px;
-}
-
-::-webkit-scrollbar-thumb
-{
-    background-color: var(--gray);
-    border-radius: 10px;
-}
 
 .gallery .galleryContainer 
 {
@@ -490,6 +475,25 @@ footer .newsLetterContainer .input
     margin-top:100px;
     color:#ccc;
     border-radius: 30px;
+}
+
+/* Scroll bar */
+
+::-webkit-scrollbar
+{
+    width: 12px;
+}
+
+::-webkit-scrollbar-track
+{
+    background-color:var(--themeRed);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb
+{
+    background-color: var(--gray);
+    border-radius: 10px;
 }
 
 /*Responsividade*/
