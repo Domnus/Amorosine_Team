@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Formulário</title>
+		<link rel="stylesheet" href="./front-end/form.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
+		<script src="front-end/components/footer.js" type="text/javascript" defer></script>
+
+		<script src="front-end/jquery.mask.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="front-end/jquery.mask.min.js"></script>
+		<script type="text/javascript">
+			jQuery(function($){$("#uf").mask("xx");});
+		</script>
+	</head>
+	<body>
+		<main>
+			<form action="post.php" method="POST">
+					<fieldset>
+						<legend class="titulo">Dados Pessoais</legend>
+						<div class="input-box">
+							<input class="inputUser" id="nome" name="nome" type="text" placeholder=" " required>
+							<label class="labelInput" for="nome">*Nome</label>
+						</div>
+						<div class="input-box">
+							<input class="inputUser" id="sobrenome" name="sobrenome" type="text" placeholder=" " required>
+							<label class="labelInput" for="sobrenome">*Sobrenome</label>
+						</div>
+						<div class="input-box">
+							<input class="inputUser" id="cpf" name="CPF" type="text" placeholder=" " required>
+							<label class="labelInput" for="cpf">*CPF</label>
+						</div>
+						<div class="input-box">
+							<input class="inputUser" id="email" name="email" type="email" placeholder=" " required>
+							<label class="labelInput" for="email">*Email</label>
+						</div>
+
+						<div class="input-box">
+							<input class="inputUser telefone form-control" id="telefone" name="telefone" type="text" placeholder=" " required>
+							<label class="labelInput" for="telefone">*Telefone</label>
+						</div>
+<!--
+						<section>
+							<legend>*Sexo</legend>
+							<label class="radio"><input type="radio" name="sexo" value="Feminino" required>Feminino</label>
+							<label class="radio"><input type="radio" name="sexo" value="Masculino">Masculino</label>
+							<label class="radio"><input type="radio" name="sexo" value="Outro">Outro</label>
+						</section>
+						<label for="data_nascimento">Data de Nascimento:</label>
+						<input id="data_nascimento" type="date" required>
+-->
+					</fieldset>
+				</fieldset>
+					<legend class="titulo">Endereço</legend>
+					<section>
+
+						<div class="input-box">
+							<input class="inputUser" id="cep" name="CEP" type="text" maxlength="8" placeholder=" " oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+							<label class="labelInput" for="cep">*CEP</label>
+						</div>
+
+						<div class="input-box">
+							<input class="inputUser" id="rua" name="rua" type="text" placeholder=" " maxlength="50" required>
+							<label class="labelInput" for="rua">*Rua</label>
+						</div>
+
+						<div class="input-box">
+							<input class="inputUser" id="numero" name="numero" type="text" placeholder=" " maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required>
+							<label class="labelInput" for="numero">*Número</label>
+						</div>
+
+						<div class="input-box">
+							<input class="inputUser" id="bairro" name="bairro" type="text" placeholder=" " required>
+							<label class="labelInput" for="bairro">*Bairro</label>
+						</div>
+						<div class="input-box">
+							<input class="inputUser" id="cidade" name="nomeCidade" type="text" placeholder=" " required>
+							<label class="labelInput" for="cidade">*Cidade</label>
+						</div>
+
+						<div class="input-box">
+							<input class="inputUser" id="UF" name="UF" type="text" placeholder=" " maxlength="2" required>
+							<label class="labelInput" for="uf">*UF</label>
+						</div>
+						<div class="input-box">
+							<input class="inputUser" id="complemento" name="complemento" type="text" placeholder=" " >
+							<label class="labelInput" for="complemento">Complemento</label>
+						</div>
+					</section>
+				</fieldset>
+				<input class="submit" type="submit" value="Voluntariar-se">
+
+			</form>
+		
+		</main>
+
+		<footer-component></footer-component>
+
+	</body>
+</html>
