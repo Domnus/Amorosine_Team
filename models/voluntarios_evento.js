@@ -1,5 +1,4 @@
 const repositorio = require('../repositories/voluntarios_eventos')
-// FIXME
 class Voluntarios_Evento {
     async adiciona(voluntarios_evento) {
         return repositorio.adiciona(voluntarios_evento).then(resultado => {

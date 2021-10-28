@@ -1,92 +1,104 @@
 <?php
-/* Variáveis de Cidade */
-$cidade = $_POST['nomeCidade'];
-$UF = $_POST['UF'];
+    /* Ativar debug */
+    ini_set('display_errors', 1);
 
-/* Variáveis de Endereço */
-$CEP = $_POST['CEP'];
-$rua = $_POST['rua'];
-$numero = $_POST['numero'];
-$bairro = $_POST['bairro'];
-$complemento = $_POST['complemento'];
+    function buscaCidade($nomeCidade, $ufCidade) {
+        $cidades = file_get_contents('http://localhost:3000/cidades/');
+        $cidades = json_decode($cidades, true);
 
-/* Variáveis de Dados Pessoais */
-$nome = $_POST['nome'];
-$sobrenome = $_POST['sobrenome'];
-$CPF = $_POST['CPF'];
-$email = $_POST['email'];
-$telefone = $_POST['telefone'];
+        for ($i = 0; $i < count($cidades); $i++) {
+            if ($nomeCidade == $cidades[$i]["nome"] && $ufCidade == $cidades[$i]["UF"]) {
+                return $cidades[$i]["idCidade"];
+            }
+        }
 
-$fieldsCidade = [
-    'nome' => $cidade,
-    'UF' => $UF,
-];
+        return False;
+    }
 
-$postdata = http_build_query($fieldsCidade);
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL, 'http://localhost:3000/cidades');
-curl_setopt($ch,CURLOPT_POST, true);
-curl_setopt($ch,CURLOPT_POSTFIELDS, $postdata);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HEADER, 1);
+    /* Função para enviar os dados do formulário */
+    function sendForm($field, $address) {
+        $postdata = http_build_query($field);
+        $ch = curl_init();
+        curl_setopt($ch,CURLOPT_URL, "http://localhost:3000/$address");
+        curl_setopt($ch,CURLOPT_POST, true);
+        curl_setopt($ch,CURLOPT_POSTFIELDS, $postdata);
+        curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
 
-$response = curl_exec($ch);
-$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-$header = substr($response, 0, $header_size);
-$body = substr($response, $header_size);
+        $response = curl_exec($ch);
+        $header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+        $header = substr($response, 0, $header_size);
+        $body = substr($response, $header_size);
 
-$idCidade = json_decode($body, true);
-$idCidade = $idCidade["id"];
+        $idObject = json_decode($body, true);
+        $id = $idObject["id"];
 
-$fieldsEndereco = [
-    'idCidade' => $idCidade,
-    'rua' => $rua,
-    'numero' => $numero,
-    'bairro' => $bairro,
-    'complemento' => $complemento,
-    'CEP' => $CEP,
-];
+        return $id;
+    }
 
-$postdata = http_build_query($fieldsEndereco);
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL, 'http://localhost:3000/enderecos');
-curl_setopt($ch,CURLOPT_POST, true);
-curl_setopt($ch,CURLOPT_POSTFIELDS, $postdata);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HEADER, 1);
+    /* Variáveis de Cidade */
+    $cidade = $_POST['nomeCidade'];
+    $UF = $_POST['uf'];
 
-$response = curl_exec($ch);
-$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-$header = substr($response, 0, $header_size);
-$body = substr($response, $header_size);
+    /* Variáveis de Endereço */
+    $CEP = $_POST['cep'];
+    $rua = $_POST['rua'];
+    $numero = $_POST['numero'];
+    $bairro = $_POST['bairro'];
+    $complemento = $_POST['complemento'];
 
-echo $body;
+    /* Variáveis de Voluntário */
+    $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
+    $CPF = $_POST['cpf'];
+    $email = $_POST['email'];
+    $telefone = $_POST['telefone'];
 
-$idEndereco = json_decode($body, true);
-$idEndereco = $idEndereco["id"];
 
-$fieldsVoluntario = [
-    'idEndereco' => $idEndereco,
-    'CPF' => $CPF,
-    'nome' => $nome,
-    'sobrenome' => $sobrenome,
-    'email' => $email,
-    'telefone' => $telefone,
-];
+    /* Enviando os dados da Cidade */
+    $fieldsCidade = [
+        'nome' => $cidade,
+        'UF' => $UF,
+    ];
 
-$postdata = http_build_query($fieldsVoluntario);
-$ch = curl_init();
-curl_setopt($ch,CURLOPT_URL, 'http://localhost:3000/voluntarios');
-curl_setopt($ch,CURLOPT_POST, true);
-curl_setopt($ch,CURLOPT_POSTFIELDS, $postdata);
-curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HEADER, 1);
+    $idCidade = buscaCidade($cidade, $UF);
 
-$response = curl_exec($ch);
-$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
-$header = substr($response, 0, $header_size);
-$body = substr($response, $header_size);
+    if (gettype($idCidade) == 'boolean') {
+        $idCidade = sendForm($fieldsCidade, 'cidades');
+    }
 
-echo $body;
+    /* Enviando os dados do Endereço */
+    $fieldsEndereco = [
+        'idCidade' => $idCidade,
+        'rua' => $rua,
+        'numero' => $numero,
+        'bairro' => $bairro,
+        'complemento' => $complemento,
+        'CEP' => $CEP,
+    ];
 
+    $idEndereco = sendForm($fieldsEndereco, 'enderecos');
+
+    /* Enviando os dados do Voluntário */
+    $fieldsVoluntario = [
+        'idEndereco' => $idEndereco,
+        'CPF' => $CPF,
+        'nome' => $nome,
+        'sobrenome' => $sobrenome,
+        'email' => $email,
+        'telefone' => $telefone,
+    ];
+
+    sendForm($fieldsVoluntario, 'voluntarios');
+
+    if (isset($_POST['submitform'])) {   
+
+        ?>
+            <script type="text/javascript">
+                alert("Obrigado por se voluntariar!");
+                window.location = "index.html";
+            </script>      
+        <?php
+
+    }
 ?>

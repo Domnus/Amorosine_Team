@@ -3,7 +3,7 @@ const repositorio = require("../repositories/enderecos")
 class Endereco {
     async adiciona(endereco){
         if (endereco.CEP) {
-            if ((endereco.CEP).length !== 8 || /[a-z]/i.test(endereco.CEP)){
+            if ((endereco.CEP).length !== 9 || /[a-z]/i.test(endereco.CEP)){
                 return new Promise((resolve, reject) => reject('CEP inválido'))
             } else {
                 return repositorio.adiciona(endereco).then(resultado => {
@@ -27,7 +27,7 @@ class Endereco {
 
     async altera(id, valores) {
         if (valores.CEP) {
-            if ((valores.CEP).length !== 8 || /[a-z]/i.test(valores.CEP)){
+            if ((valores.CEP).length !== 9 || /[a-z]/i.test(valores.CEP)){
                 return new Promise((resolve, reject) => reject('CEP inválido'))
             }  
         } 

@@ -6,7 +6,7 @@ class Cidade {
 			if ((cidade.UF).length === 2) {
 				return repositorio.adiciona(cidade).then(resultado => {
 				const id = resultado.insertId
-				const novaCidade = {id}
+				const novaCidade = {id, ...cidade}
 				return novaCidade
 				})
 			} else {

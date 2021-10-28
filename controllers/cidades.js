@@ -1,7 +1,6 @@
 const { json } = require('body-parser')
 const Cidade = require('../models/cidades')
 
-// FIXME
 module.exports = app => {
 	app.get('/cidades', (req, res) => {
 		Cidade.lista().then(resultado => res.status(200).json(resultado))

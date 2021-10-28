@@ -1,9 +1,8 @@
 const repositorio = require("../repositories/voluntarios")
-// FIXME
 class Voluntario {
     async adiciona(voluntario){
         if(voluntario.CPF){
-            if ((voluntario.CPF).length !== 11){
+            if ((voluntario.CPF).length !== 14){
                 return new Promise((resolve,reject) => reject("CPF inválido"))
             } else {
                 return repositorio.adiciona(voluntario).then(resultado => {
@@ -26,7 +25,7 @@ class Voluntario {
 
     async altera(id, valores){
         if(valores.CPF){
-            if ((valores.CPF).length !== 11)
+            if ((valores.CPF).length !== 14)
                 return new Promise((resolve,reject) => reject("CPF inválido"))
         } else {
             return new Promise((resolve, reject) => reject("CPF não informado"))

@@ -30,7 +30,6 @@ form label {
 
 fieldset {
 	border: none;
-	margin-bottom: 10px;
 }
 
 .titulo {
@@ -40,10 +39,14 @@ fieldset {
 	font-size: 1.5em;
 	border: 1px solid var(--themeRed);
 	padding: 10px;
+	align-content: center;
 	text-align: center;
 	background-color: var(--themeRed);
 	border-radius: 8px;
-	margin-bottom: 12px;
+}
+
+p {
+	font-size: 1.2em;
 }
 
 .input-box {
@@ -59,7 +62,18 @@ fieldset {
 	color: white;
 	font-size: 15px;
 	width: 100%;
-	letter-spacing: 2px;
+	letter-spacing: 1px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px rgb(155, 124, 124) inset !important;
+}
+
+input:-webkit-autofill{
+    -webkit-text-fill-color: white !important;
 }
 
 .labelInput{
@@ -100,12 +114,13 @@ fieldset {
 
 .submit:hover{
 	background: var(--themeRed);
+	font-size: 1.2em;
 }
 
 /* Footer */
 footer .container{
-	margin: 0px auto;
-	padding: auto 5px;
+	margin: 0 auto;
+	padding: 5px;
 }
 
 /* Scroll bar */

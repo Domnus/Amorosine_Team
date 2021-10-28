@@ -36,7 +36,7 @@ class Tabelas {
 	}
 
 	criarEnderecos() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEndereco` INT NOT NULL AUTO_INCREMENT, `idCidade` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL, `bairro` VARCHAR(45) NOT NULL, `complemento` VARCHAR(45) NULL DEFAULT NULL, `CEP` VARCHAR(8) NOT NULL, PRIMARY KEY (`idEndereco`, `idCidade`), INDEX `fk_Enderecos_Cidades1_idx` (`idCidade` ASC) VISIBLE, CONSTRAINT `fk_Enderecos_Cidades1` FOREIGN KEY (`idCidade`) REFERENCES `amorosine_team`.`Cidades` (`idCidade`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Enderecos` (`idEndereco` INT NOT NULL AUTO_INCREMENT, `idCidade` INT NOT NULL, `rua` VARCHAR(45) NOT NULL, `numero` VARCHAR(45) NOT NULL, `bairro` VARCHAR(45) NOT NULL, `complemento` VARCHAR(45) NULL DEFAULT NULL, `CEP` VARCHAR(9) NOT NULL, PRIMARY KEY (`idEndereco`, `idCidade`), INDEX `fk_Enderecos_Cidades1_idx` (`idCidade` ASC) VISIBLE, CONSTRAINT `fk_Enderecos_Cidades1` FOREIGN KEY (`idCidade`) REFERENCES `amorosine_team`.`Cidades` (`idCidade`)) ENGINE = InnoDB'
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {
@@ -62,7 +62,7 @@ class Tabelas {
 	
 
 	criarVoluntarios() {
-		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Voluntarios` (`idVoluntario` INT NOT NULL AUTO_INCREMENT, `idEndereco` INT NOT NULL, `CPF` VARCHAR(11) NOT NULL, `nome` VARCHAR(50) NOT NULL, `sobrenome` VARCHAR(50) NOT NULL, `email` VARCHAR(50) NOT NULL, `telefone` VARCHAR(9) NOT NULL, PRIMARY KEY (`idVoluntario`, `idEndereco`, `CPF`), INDEX `fk_Voluntarios_Enderecos_idx` (`idEndereco` ASC) VISIBLE, CONSTRAINT `fk_Voluntarios_Enderecos` FOREIGN KEY (`idEndereco`) REFERENCES `amorosine_team`.`Enderecos` (`idEndereco`)) ENGINE = InnoDB'
+		const sql = 'CREATE TABLE IF NOT EXISTS `amorosine_team`.`Voluntarios` (`idVoluntario` INT NOT NULL AUTO_INCREMENT, `idEndereco` INT NOT NULL, `CPF` VARCHAR(14) NOT NULL, `nome` VARCHAR(50) NOT NULL, `sobrenome` VARCHAR(50) NOT NULL, `email` VARCHAR(50) NOT NULL, `telefone` VARCHAR(16) NOT NULL, PRIMARY KEY (`idVoluntario`, `idEndereco`, `CPF`), INDEX `fk_Voluntarios_Enderecos_idx` (`idEndereco` ASC) VISIBLE, CONSTRAINT `fk_Voluntarios_Enderecos` FOREIGN KEY (`idEndereco`) REFERENCES `amorosine_team`.`Enderecos` (`idEndereco`)) ENGINE = InnoDB'
 
 		this.conexao.query(sql, (erro) => {
 			if (erro) {
