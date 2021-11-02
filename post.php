@@ -53,12 +53,14 @@
     $CPF = $_POST['cpf'];
     $email = $_POST['email'];
     $telefone = $_POST['telefone'];
+    $sexo = $_POST['sexo'];
+    $dataNasc = $_POST['data'];
 
 
     /* Enviando os dados da Cidade */
     $fieldsCidade = [
         'nome' => $cidade,
-        'UF' => $UF,
+        'UF' => $UF
     ];
 
     $idCidade = buscaCidade($cidade, $UF);
@@ -74,7 +76,7 @@
         'numero' => $numero,
         'bairro' => $bairro,
         'complemento' => $complemento,
-        'CEP' => $CEP,
+        'CEP' => $CEP
     ];
 
     $idEndereco = sendForm($fieldsEndereco, 'enderecos');
@@ -87,6 +89,8 @@
         'sobrenome' => $sobrenome,
         'email' => $email,
         'telefone' => $telefone,
+        'sexo' => $sexo,
+        'dataNasc' => $dataNasc
     ];
 
     sendForm($fieldsVoluntario, 'voluntarios');
