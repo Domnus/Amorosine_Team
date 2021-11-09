@@ -301,7 +301,7 @@ header nav ul li a:hover
 .programs .boxContainer .box:nth-child(1) .cardImage,
 .programs .boxContainer .box:nth-child(1) .cardImage:after
 {
-    background-image: url(imagens/aulastaekwondo.jpg);
+    background-image: url(imagens/aulastaekwondo.jpeg);
 
 }
 
@@ -417,6 +417,10 @@ header nav ul li a:hover
     transform: scale(0.9);
 }
 
+#doacao {
+    text-decoration: none;
+    color: inherit;
+}
 
 /* Scroll bar */
 
