@@ -4,14 +4,44 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="admPage.css">
 	<title>Document</title>
 	<script src="admPage.js"></script>
+
 </head>
 <body>
 
 	<h1>Ações Sociais</h1>
 
 	<table id="acoesSociais"></table>
+
+	<button id="addAcao">Adicionar Ação Social</button>
+
+	<div id="addAcaoModal" class="addModal">
+		<div class="modal-header">
+			<span class="close">&times;</span>
+			<h2>Modal Header</h2>
+		</div>
+		<div id="conteudo" class="model-body">
+			<div class="modal-content">
+				<form action="">
+					<div>
+						<label for="nome">Nome da Ação</label>
+						<input type="text" id="nome" name="nome">
+					</div>
+					<div>
+						<label for="descricao">Descriçãoda da Ação</label>
+						<input type="text" id="descricao" name="descricao">
+					</div>
+					<input class="submit" type="submit" name="submitform" value="Adicionar">
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<h1>Eventos</h1>
+
+	<table id="eventos"></table>
 	
 </body>
 </html>
