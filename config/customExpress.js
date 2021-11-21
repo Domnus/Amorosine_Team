@@ -5,8 +5,9 @@ const bodyParser = require("body-parser")
 module.exports = () => {
 	const app = express()
 
-	app.use(bodyParser.urlencoded({extended: true}))
-	app.use(bodyParser.json())
+	app.use('/assets/images/', express.static('assets/images/'))
+
+	app.use(bodyParser.urlencoded({limit: '50mb'}))
 
 	app.use(function (req, res, next) {
 		res.header("Access-Control-Allow-Origin", "*");

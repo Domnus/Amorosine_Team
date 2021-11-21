@@ -53,3 +53,25 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+/*
+.programs .boxContainer .box:nth-child(1) .cardImage,
+.programs .boxContainer .box:nth-child(1) .cardImage:after
+{
+    background-image: url(../assets/images/Aulas_de_Taekwondo);
+
+}
+
+.programs .boxContainer .box:nth-child(2) .cardImage,
+.programs .boxContainer .box:nth-child(2) .cardImage:after
+{
+    background-image: url(imagens/agasalho1.jpeg);
+}
+
+.programs .boxContainer .box:nth-child(3) .cardImage,
+.programs .boxContainer .box:nth-child(3) .cardImage:after
+{
+    background-image: url(imagens/doacaoSangue1.jpeg);
+}
+*/
+

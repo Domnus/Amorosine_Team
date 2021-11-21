@@ -298,6 +298,7 @@ header nav ul li a:hover
     transition:0.4s;
 }
 
+/*
 .programs .boxContainer .box:nth-child(1) .cardImage,
 .programs .boxContainer .box:nth-child(1) .cardImage:after
 {
@@ -315,8 +316,9 @@ header nav ul li a:hover
 .programs .boxContainer .box:nth-child(3) .cardImage,
 .programs .boxContainer .box:nth-child(3) .cardImage:after
 {
-    background-image: url(imagens/doacaosangue.jpg);
+    background-image: url(imagens/doacaoSangue.jpg);
 }
+*/
 
 .programs .boxContainer .box:hover .cardImage:after
 {

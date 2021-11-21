@@ -36,6 +36,8 @@
         return $id;
     }
 
+    /* Formulário de Voluntário */
+
     /* Variáveis de Cidade */
     $cidade = $_POST['nomeCidade'];
     $UF = $_POST['uf'];
@@ -105,4 +107,6 @@
         <?php
 
     }
+
+
 ?>

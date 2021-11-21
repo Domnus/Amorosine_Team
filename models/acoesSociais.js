@@ -1,5 +1,6 @@
 const repositorio = require('../repositories/acaoSocial')
 class AcaoSocial {
+
 	async adiciona(acaoSocial) {
 		return repositorio.adiciona(acaoSocial).then(resultado => {
 			const id = resultado.insertId
