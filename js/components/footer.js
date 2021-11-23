@@ -71,7 +71,7 @@ class Footer extends HTMLElement {
 		<footer>
 			<div class="container">
 				<div class="newsLetterContainer">
-					<img src="./front-end/imagens/logo.png" alt="logo">
+					<img src="../public/img/logo.png" alt="logo">
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus consectetur molestias neque tempore amet quae atque.</p>
 
 				</div>
@@ -80,7 +80,7 @@ class Footer extends HTMLElement {
 					<div class="title">Links úteis</div>
 					<ul>
 						<li>
-							<a href="#homeSection">Home</a>
+							<a href="../index.html">Home</a>
 						</li>
 
 						<li>

@@ -5,8 +5,6 @@ const bodyParser = require("body-parser")
 module.exports = () => {
 	const app = express()
 
-	app.use('/assets/images/', express.static('assets/images/'))
-
 	app.use(bodyParser.urlencoded({limit: '50mb'}))
 
 	app.use(function (req, res, next) {
@@ -16,7 +14,7 @@ module.exports = () => {
 	});
 
 	consign()
-		.include('controllers')
+		.include('./js/controllers')
 		.into(app)
 
 	return app

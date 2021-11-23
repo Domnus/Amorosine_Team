@@ -132,7 +132,7 @@ header nav ul li a:hover
 {
     min-height: 100vh;
     width:100%;
-    background-image:url(imagens/banner3.jpeg);
+    background-image:url(../public/img/banner3.jpeg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -298,27 +298,27 @@ header nav ul li a:hover
     transition:0.4s;
 }
 
-/*
+
 .programs .boxContainer .box:nth-child(1) .cardImage,
 .programs .boxContainer .box:nth-child(1) .cardImage:after
 {
-    background-image: url(imagens/aulastaekwondo.jpeg);
+    background-image: url(../public/img/aulastaekwondo.jpeg);
 
 }
 
 .programs .boxContainer .box:nth-child(2) .cardImage,
 .programs .boxContainer .box:nth-child(2) .cardImage:after
 {
-    background-image: url(imagens/agasalho.jpg);
+    background-image: url(../public/img/agasalho.jpg);
     
 }
 
 .programs .boxContainer .box:nth-child(3) .cardImage,
 .programs .boxContainer .box:nth-child(3) .cardImage:after
 {
-    background-image: url(imagens/doacaoSangue.jpg);
+    background-image: url(../public/img/doacaoSangue.jpg);
 }
-*/
+
 
 .programs .boxContainer .box:hover .cardImage:after
 {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="../css/style.css">
+		<link rel="stylesheet" href="../css/admPage.css">
+		<title>Document</title>
+		<script src="../js/admPage.js"></script>
+		<script src="../js/components/footer.js" type="text/javascript" defer></script>
+	</head>
+	<body>
+		<div id="addAcaoModal" class="addModal">
+			<div id="conteudo" class="model-body">
+
+				<div class="modal-content">
+
+					<div class="modal-header">
+						<span class="close">&times;</span>
+						<h2>Nova Ação Social</h2>
+					</div>
+				
+					<form class="formAcoes" action="../php/postAcoes.php" method="POST" enctype="multipart/form-data">
+						<div class="input-box">
+							<label class="labelInput" for="nome">Nome da Ação*</label>
+							<input class="inputUser" type="text" id="nome" name="nomeAcao" required>
+						</div>
+						<div class="input-box">
+							<label class="labelInput" for="descricao">Descrição da Ação*</label>
+							<input class="inputUser" type="text" id="descricao" name="descricaoAcao" required>
+						</div>
+						<div class="input-box">
+							<label class="labelInput" for="imagem">Imagem*</label>
+							<input class="inputUser" id="src" type="file" name="imagem" accept="image/png, image/jpeg, image/jpg" required>
+							<img id="target">
+						</div>
+						<button class="submit botaoEnviar" type="submit" name="submitform">Enviar</button>
+					</form>
+				</div>
+			</div>
+		</div>
+
+		<section class="programs" id="programsSection">
+			<div class="container">
+				<h2 class="sectionTitle">Ações Sociais</h2>
+
+				<div class="boxContainer" id="acoesSociais"></div>
+
+			</div>
+
+			<button class="botaoEnviar" id="addAcao">Adicionar Ação Social</button>
+		</section>
+
+	</body>
+
+	<footer-component></footer-component>
+</html>

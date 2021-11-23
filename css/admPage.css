@@ -1,8 +1,11 @@
 /* Modal Header */
 .modal-header {
   padding: 2px 16px;
-  background-color: #5cb85c;
+  background-color: var(--themeRed);
   color: white;
+  text-align: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .addModal {
@@ -23,15 +26,24 @@
 }
 
 .modal-content {
-  position: relative;
+  position: absolute;
+  top: calc(50% - 150px);
+  left: calc(50% - 150px);
   background-color: #fefefe;
   margin: auto;
   padding: 0;
   border: 1px solid #888;
-  width: 80%;
+  border-radius: 10px;
+  border-top-left-radius: 11px;
+  border-top-right-radius: 11px;
+  width: 300px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
   animation-name: animatetop;
   animation-duration: 0.4s
+}
+
+.formAcoes {
+  margin: 10px 10px;
 }
 
 @keyframes animatetop {
@@ -54,24 +66,43 @@
   cursor: pointer;
 }
 
-/*
-.programs .boxContainer .box:nth-child(1) .cardImage,
-.programs .boxContainer .box:nth-child(1) .cardImage:after
-{
-    background-image: url(../assets/images/Aulas_de_Taekwondo);
-
+.input-box {
+  text-align: center;
 }
 
-.programs .boxContainer .box:nth-child(2) .cardImage,
-.programs .boxContainer .box:nth-child(2) .cardImage:after
-{
-    background-image: url(imagens/agasalho1.jpeg);
+.inputUser:required, .inputUser:optional, .labelInput:empty{
+	font-size: 15px;
+  padding: 5px;
+	width: 100%;
+	letter-spacing: 1px;
+  border: none;
+  border-bottom: 2px solid red;
 }
 
-.programs .boxContainer .box:nth-child(3) .cardImage,
-.programs .boxContainer .box:nth-child(3) .cardImage:after
-{
-    background-image: url(imagens/doacaoSangue1.jpeg);
+#target {
+  width: 200px;
 }
-*/
 
+.botaoEnviar {
+  position: relative;
+  left: 50%;
+  background-color: var(--themeRed);
+  color: #fff;
+  transform: translate(-50%);
+  bottom: -15px;
+  border-radius: 60px;
+  padding: 7px 15px;
+  margin-bottom: 20px;
+  border: 0;
+  outline: none;
+  cursor: pointer;
+}
+
+.botaoEnviar:hover {
+  transform:translate(-50%);
+  background-color: #bd1c29;
+  transition: 0.2s;    
+  border: 5px solid #bd1c29;
+  font-size: 1.1em;
+  height: auto;
+}

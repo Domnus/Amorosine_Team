@@ -3,14 +3,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Formulário</title>
-		<link rel="stylesheet" href="./front-end/form.css">
+		<link rel="stylesheet" href="../css/form.css">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="shortcut icon" href="imagens/favicon.ico" type="image/x-icon">
-		<script src="form.js" type='text/javascript' defer></script>
-		<script src="front-end/components/footer.js" type="text/javascript" defer></script>
+		<link rel="shortcut icon" href="../public/assets/img/favicon/favicon.ico" type="image/x-icon">
+		<script src="../js/form.js" type='text/javascript' defer></script>
+		<script src="../js/components/footer.js" type="text/javascript" defer></script>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-		<script src="front-end/jquery.mask.min.js"></script>
+		<script src="../js/jquery.mask.min.js"></script>
 		<script type="text/javascript">
 			jQuery(function($){$("#cep").mask("99999-999");});
 			jQuery(function($){$("#telefone").mask("(99) 9 9999-9999");});
@@ -20,7 +20,7 @@
 	</head>
 	<body>
 		<main>
-			<form action="./postVoluntario.php" method="POST">
+			<form action="../php/postVoluntario.php" method="POST">
 					<fieldset>
 						<legend class="titulo">Dados Pessoais</legend>
 						<div class="input-box">
@@ -59,7 +59,7 @@
 						<legend class="titulo">Endereço</legend>
 						<section>
 							<div class="input-box">
-								<input class="inputUser" id="cep" name="cep" type="text" maxlength="8" placeholder=" " oninput="this.value = this.value.replace(/[^0-9.]/g, post'').replace(/(\..*?)\..*/g, '$1');" required>
+								<input class="inputUser" id="cep" name="cep" type="text" maxlength="8" placeholder=" " oninput="this.value = this.value.replace(/[^0-9.]/g, post,'').replace(/(\..*?)\..*/g, '$1');" required>
 								<label class="labelInput" for="cep">*CEP</label>
 							</div>
 
@@ -92,7 +92,7 @@
 							</div>
 						</section>
 					</fieldset>
-				<input class="submit" type="submit" name="submitform" value="Voluntariar-se">
+				<button class="submit" type="submit" name="submitform">Voluntariar-se</button>
 
 			</form>
 		

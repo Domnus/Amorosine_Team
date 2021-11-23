@@ -2,7 +2,7 @@ window.onload = function() {
 	/* Pegar dados do banco */
 	const acoes_url = "http://localhost:3000/acoes"
 	const eventosurl = "http://localost:3000/eventos"
-	const urlImagem = "../assets/images/"
+	const urlImagem = "../public/img/acoesSociais/"
 
 	async function getData(url) {
 		const response = await fetch(url);
@@ -59,6 +59,20 @@ window.onload = function() {
 
 	getData(acoes_url);
 
+	function showImage(src,target) {
+		var fr=new FileReader();
+		// when image is loaded, set the src of the image where you want to display it
+		fr.onload = function(e) { target.src = this.result; };
+		src.addEventListener("change",function() {
+		  // fill fr with image data    
+		  fr.readAsDataURL(src.files[0]);
+		});
+	  }
+	  
+	var src = document.getElementById("src");
+	var target = document.getElementById("target");
+	showImage(src,target);
+
 	/* Modal */
 	var addAcaoModal = document.getElementById("addAcaoModal");
 
@@ -69,8 +83,6 @@ window.onload = function() {
 	addButton.onclick = function() {
 		addAcaoModal.style.display = "block";
 	}
-
-
 
 	window.onclick = function (event) {
 		if (event.target == addAcaoModal) {

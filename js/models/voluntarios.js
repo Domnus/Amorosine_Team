@@ -1,4 +1,4 @@
-const repositorio = require("../repositories/voluntarios")
+const repositorio = require("../views/voluntarios")
 const moment = require('moment')
 
 class Voluntario {

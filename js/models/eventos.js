@@ -1,5 +1,5 @@
 const moment = require('moment')
-const repositorio = require('../repositories/eventos')
+const repositorio = require('../views/eventos')
 
 class Evento {
     constructor() {

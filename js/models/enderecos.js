@@ -1,4 +1,4 @@
-const repositorio = require("../repositories/enderecos")
+const repositorio = require("../views/enderecos")
 
 class Endereco {
     async adiciona(endereco){

@@ -1,4 +1,4 @@
-const repositorio = require('../repositories/voluntarios_eventos')
+const repositorio = require('../views/voluntarios_eventos')
 class Voluntarios_Evento {
     async adiciona(voluntarios_evento) {
         return repositorio.adiciona(voluntarios_evento).then(resultado => {

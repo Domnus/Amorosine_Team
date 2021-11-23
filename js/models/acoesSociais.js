@@ -1,4 +1,4 @@
-const repositorio = require('../repositories/acaoSocial')
+const repositorio = require('../views/acaoSocial')
 class AcaoSocial {
 
 	async adiciona(acaoSocial) {

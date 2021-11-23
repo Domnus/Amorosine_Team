@@ -1,4 +1,4 @@
-const repositorio = require('../repositories/cidades')
+const repositorio = require('../views/cidades')
 
 class Cidade {
 	async adiciona(cidade) {
