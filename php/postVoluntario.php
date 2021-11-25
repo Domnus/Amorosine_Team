@@ -103,7 +103,7 @@
             ?>
                 <script type="text/javascript">
                     alert("Obrigado por se voluntariar!");
-                    window.location = "index.html";
+                    window.location = "../index.html";
                 </script>      
             <?php
 
