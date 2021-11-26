@@ -15,18 +15,32 @@ class AcaoSocial {
 	}
 
 	async busca(id) {
-		return repositorio.busca(id).then(resultado => {return resultado[0]})
-								    .catch(erro => {return erro})
-	}	
+        const acaoSocial = await repositorio.busca(id)
+        if (acaoSocial.length !== 0) {
+            return new Promise((resolve, reject) => resolve(acaoSocial[0]))
+        } else {
+		   return new Promise((resolve, reject) => reject("Ação inexistente!"))
+        }
+	}
 
 	async altera(id, valores) {
-		return repositorio.altera(id, valores).then(resultado => {return valores})
-											  .catch(erro => {return erro})
+ 		const acaoSocial = await this.busca(id)
+        if (acaoSocial !== 0) {
+			return repositorio.altera(id, valores).then(resultado => {return {...acaoSocial, ...valores}})
+									 .catch(erro => {return "Ocorreu um erro!"})
+       } else {
+		   return new Promise((resolve, reject) => reject("Ação inexistente!"))
+	   }
 	}
 
 	async deleta(id) {
-		return repositorio.deleta(id).then(resultado => {return id})
-									 .catch(erro => {return erro})
+		const acaoSocial = await this.busca(id) 
+        if (acaoSocial) {
+			return repositorio.deleta(id).then(resultado => {return resultado})
+									 .catch(erro => {return "Ocorreu um erro!"})
+       } else {
+		   return new Promise((resolve, reject) => reject("Ação inexistente!"))
+	   }
 	}
 }
 
