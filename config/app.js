@@ -10,7 +10,7 @@ const voluntarioController = require('../js/actions/voluntarioAction.js')
 // Configurando o multer para fazer upload de arquivos para a pasta 'public/img'
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/img');
+    cb(null, 'public/img/acoesSociais');
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);

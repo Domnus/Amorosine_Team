@@ -1,9 +1,9 @@
-const voluntarios = require("../views/voluntarios");
-const endereco = require("../views/enderecos");
-const cidades = require("../views/cidades");
+const voluntarios = require("../models/voluntarios");
+const endereco = require("../models/enderecos");
+const cidades = require("../models/cidades");
 
 module.exports = {
-  enviarVoluntario: (req, res) => {
+  enviarVoluntario: async (req, res) => {
     try {
       /* Informações do voluntário */
       const nome = req.body.nome;
@@ -23,44 +23,33 @@ module.exports = {
       const uf = req.body.uf;
       const complemento = req.body.complemento;
 
-      cidades.adiciona({
-        nome: cidade,
-        UF: uf,
+      resultado = await cidades.buscaNome({ nome: cidade })
+
+      if (resultado === undefined) {
+        resultado = await cidades.adiciona({ UF: uf, nome: cidade })
+      }
+
+      resultado = await endereco.adiciona({
+        CEP: cep,
+        rua: rua,
+        numero: numero,
+        bairro: bairro,
+        complemento: complemento,
+        idCidade: resultado.id,
       })
-        .then((idCidade) => {
-          id = idCidade;
-          endereco.adiciona({
-            CEP: cep,
-            rua: rua,
-            numero: numero,
-            bairro: bairro,
-            complemento: complemento,
-            idCidade: idCidade,
-          })
-            .then((idEndereco) => {
-              voluntarios.adiciona({
-                nome: nome,
-                sobrenome: sobrenome,
-                CPF: cpf,
-                email: email,
-                telefone: telefone,
-                sexo: sexo,
-                dataNasc: dataNascimento,
-                idEndereco: idEndereco,
-              })
-                .then(() => {
-                  res.status(200).send("Voluntário cadastrado com sucesso.");
-                })
-                .catch((error) => {
-                  console.error("Erro ao cadastrar voluntário:", error);
-                  res.status(500).send("Erro ao cadastrar voluntário." + error);
-                });
-            })
-            .catch((error) => {
-              console.error("Erro ao cadastrar endereço:", error);
-              res.status(500).send("Erro ao cadastrar endereço." + error);
-            });
-        })
+
+      resultado = await voluntarios.adiciona({
+        nome: nome,
+        sobrenome: sobrenome,
+        CPF: cpf,
+        email: email,
+        telefone: telefone,
+        sexo: sexo,
+        dataNasc: dataNascimento,
+        idEndereco: resultado.id,
+      })
+
+      res.status(200).send("Voluntário cadastrado com sucesso.");
     } catch (error) {
       console.error("Erro na requisição:", error);
       res.status(500).send("Erro na requisição." + error);

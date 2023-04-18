@@ -30,6 +30,11 @@ class Cidade {
 									.catch(erro => {return erro})
 	}
 
+	async buscaNome(nome) {
+		return repositorio.buscaNome(nome).then(resultado => {return resultado[0]})
+									.catch(erro => {return erro})
+	}
+
 	async altera(id, valores) {
 		if (valores.UF) {
 			if ((valores.UF).length > 2 || (valores.UF).length < 2) {

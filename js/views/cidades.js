@@ -19,6 +19,12 @@ class Cidade {
 		return query(sql, id)
 	}
 
+	buscaNome(nome) {
+		const sql = 'SELECT * FROM Cidades WHERE nome = ?'
+
+		return query(sql, nome)
+	}
+
 	altera(id, valores) {
 		const sql = 'UPDATE Cidades SET ? WHERE idCidade = ?'
 

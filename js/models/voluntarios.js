@@ -31,6 +31,10 @@ class Voluntario {
         return repositorio.busca(id).then(resultado => {return resultado})
     }
 
+    async buscaNome(nome){
+        return repositorio.busca(nome).then(resultado => {return resultado})
+    }
+
     async altera(id, valores){
         if(valores.CPF){
             if ((valores.CPF).length !== 14)

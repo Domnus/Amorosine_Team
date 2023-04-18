@@ -16,7 +16,7 @@ class Tabelas {
 			idAcaoSocial INT NOT NULL AUTO_INCREMENT, 
 			nome VARCHAR(100) NOT NULL, 
 			descricao VARCHAR(250) NULL DEFAULT NULL, 
-			imagem VARCHAR(200),
+			nomeImagem VARCHAR(200),
 			PRIMARY KEY (idAcaoSocial)) 
 			ENGINE = InnoDB;`
 
