@@ -1,6 +1,7 @@
 const query = require ("../database/queries")
+const View = require('../template/ViewTemplate')
 
-class Voluntario{
+class Voluntario extends View {
     adiciona(voluntario){
         const sql = "INSERT INTO Voluntarios SET ?"
 

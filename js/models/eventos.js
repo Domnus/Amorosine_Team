@@ -1,8 +1,10 @@
 const moment = require('moment')
 const repositorio = require('../views/eventos')
+const Model = require('../template/ModelTemplate')
 
-class Evento {
+class Evento extends Model {
     constructor() {
+        super()
         this.dataInicioValida = ({ dataAtual, dataInicio }) => moment(dataInicio).isSameOrAfter(dataAtual)
         this.dataFinalValida = ({ dataInicio, dataFinal }) => moment(dataFinal).isSameOrAfter(dataInicio)
         this.valida = parametros => this.validacoes.filter(campo => {

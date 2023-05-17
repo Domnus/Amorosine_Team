@@ -1,7 +1,8 @@
 const repositorio = require("../views/voluntarios")
 const moment = require('moment')
+const Model = require('../template/ModelTemplate')
 
-class Voluntario {
+class Voluntario extends Model {
     async adiciona(voluntario){
         if(voluntario.CPF){
             if ((voluntario.CPF).length !== 14){

@@ -1,6 +1,7 @@
 const repositorio = require("../views/enderecos")
+const Model = require('../template/ModelTemplate')
 
-class Endereco {
+class Endereco extends Model {
     async adiciona(endereco){
         if (endereco.CEP) {
             if ((endereco.CEP).length !== 9 || /[a-z]/i.test(endereco.CEP)){

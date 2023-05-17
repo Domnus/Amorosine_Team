@@ -1,6 +1,7 @@
 const query = require("../database/queries")
+const View = require('../template/ViewTemplate')
 
-class Endereco {
+class Endereco extends View {
 	lista() {
 		const sql = "SELECT * FROM Enderecos"
 

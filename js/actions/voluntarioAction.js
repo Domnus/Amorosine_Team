@@ -1,44 +1,53 @@
 const voluntarios = require("../models/voluntarios");
 const endereco = require("../models/enderecos");
 const cidades = require("../models/cidades");
+const VoluntarioBuilder = require("../builders/voluntarioBuilder");
+const EnderecoBuilder = require("../builders/enderecoBuilder");
+const CidadeBuilder = require("../builders/cidadeBuilder");
 
 module.exports = {
   enviarVoluntario: async (req, res) => {
     try {
       /* Informações do voluntário */
-      const nome = req.body.nome;
-      const sobrenome = req.body.sobrenome;
-      const cpf = req.body.cpf;
-      const email = req.body.email;
-      const telefone = req.body.telefone;
-      const sexo = req.body.sexo;
-      const dataNascimento = req.body.dataNascimento;
+      const voluntario = VoluntarioBuilder(req.body);
+      var erro = voluntario.validaDados();
 
-      /* Informações do endereço */
-      const cep = req.body.cep;
-      const rua = req.body.rua;
-      const numero = req.body.numero;
-      const bairro = req.body.bairro;
-      const cidade = req.body.nomeCidade;
-      const uf = req.body.uf;
-      const complemento = req.body.complemento;
-
-      resultado = await cidades.buscaNome({ nome: cidade })
-
-      if (resultado === undefined) {
-        resultado = await cidades.adiciona({ UF: uf, nome: cidade })
+      if (erro != '') {
+        res.status(406).send(erro);
       }
 
-      resultado = await endereco.adiciona({
+      /* Informações do endereço */
+      const endereco = EnderecoBuilder(req.body);
+      var erro = endereco.validaDados();
+
+      if (erro != '') {
+        res.status(406).send(erro);
+      }
+
+      /* Informações da cidade */
+      resultadoCidade = await cidades.buscaNome({ nome: cidade })
+
+      if (resultadoCidade === undefined) {
+        const cidade = new CidadeBuilder();
+        var erro = cidade.validaDados();        
+
+        if (erro != '') {
+          res.status(406).send(erro);
+        }
+
+        resultadoCidade = await cidades.adiciona({ UF: uf, nome: cidade })
+      }
+
+      resultadoEndereco = await endereco.adiciona({
         CEP: cep,
         rua: rua,
         numero: numero,
         bairro: bairro,
         complemento: complemento,
-        idCidade: resultado.id,
+        idCidade: resultadoCidade.id,
       })
 
-      resultado = await voluntarios.adiciona({
+      resultadoVoluntario = await voluntarios.adiciona({
         nome: nome,
         sobrenome: sobrenome,
         CPF: cpf,
@@ -46,7 +55,7 @@ module.exports = {
         telefone: telefone,
         sexo: sexo,
         dataNasc: dataNascimento,
-        idEndereco: resultado.id,
+        idEndereco: resultadoEndereco.id,
       })
 
       res.status(200).send("Voluntário cadastrado com sucesso.");

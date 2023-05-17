@@ -1,17 +1,19 @@
 const repositorio = require('../views/acaoSocial')
-class AcaoSocial {
+const Model = require('../template/ModelTemplate')
+
+class AcaoSocial extends Model {
 
 	async adiciona(acaoSocial) {
 		return repositorio.adiciona(acaoSocial).then(resultado => {
 			const id = resultado.insertId
 			return {id, ...acaoSocial}
 		})
-											   .catch(erro => {return erro})
+		.catch(erro => {return erro})
 	}
 
 	async lista() {
 		return repositorio.lista().then(resultado => {return resultado})
-							      .catch(erro => {return erro})
+		.catch(erro => {return erro})
 	}
 
 	async busca(id) {
@@ -37,7 +39,7 @@ class AcaoSocial {
 		const acaoSocial = await this.busca(id) 
         if (acaoSocial) {
 			return repositorio.deleta(id).then(resultado => {return resultado})
-									 .catch(erro => {return "Ocorreu um erro!"})
+										 .catch(erro => {return "Ocorreu um erro!"})
        } else {
 		   return new Promise((resolve, reject) => reject("Ação inexistente!"))
 	   }

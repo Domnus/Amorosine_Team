@@ -1,6 +1,7 @@
 const repositorio = require('../views/cidades')
+const Model = require('../template/ModelTemplate')
 
-class Cidade {
+class Cidade extends Model {
 	async adiciona(cidade) {
 		if (cidade.UF) {
 			if ((cidade.UF).length === 2) {
@@ -32,7 +33,7 @@ class Cidade {
 
 	async buscaNome(nome) {
 		return repositorio.buscaNome(nome).then(resultado => {return resultado[0]})
-									.catch(erro => {return erro})
+										  .catch(erro => {return erro})
 	}
 
 	async altera(id, valores) {
@@ -45,7 +46,7 @@ class Cidade {
 		return repositorio.altera(id, valores).then(resultado => {
 			return valores
 		})
-											  .catch(erro => {return erro})
+		.catch(erro => {return erro})
 	}
 
 	async deleta(id) {
