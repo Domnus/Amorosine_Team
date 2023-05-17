@@ -1,6 +1,6 @@
 const repositorio = require("../views/voluntarios")
 const moment = require('moment')
-const Model = require('../template/ModelTemplate')
+const Model = require('../template/ModelTemplate.tsx')
 
 class Voluntario extends Model {
     async adiciona(voluntario){

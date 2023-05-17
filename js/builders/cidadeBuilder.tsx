@@ -1,4 +1,7 @@
 class CidadeBuilder {
+    cidade = '';
+    uf     = '';
+
     constructor(dados) {
       this.cidade = dados?.nomeCidade;
       this.uf     = dados?.uf;
@@ -16,3 +19,5 @@ class CidadeBuilder {
         return "";
     }
 }
+
+module.exports = CidadeBuilder;

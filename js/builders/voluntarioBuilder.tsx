@@ -1,4 +1,12 @@
 class VoluntarioBuilder {
+    nome           = '' 
+    sobrenome      = '' 
+    cpf            = '' 
+    email          = '' 
+    telefone       = '' 
+    sexo           = '' 
+    dataNascimento = ''   
+
     constructor(dados) {
         this.nome           = dados?.nome;
         this.sobrenome      = dados?.sobrenome;
@@ -45,13 +53,13 @@ class VoluntarioBuilder {
         let dateformat = /^(0?[1-9]|[1-2][0-9]|3[01])[\/](0?[1-9]|1[0-2])/;
     
         // Matching the date through regular expression      
-        if (date.match(dateformat)) {
-            let operator = date.split('/');
+        if (data.match(dateformat)) {
+            let operator = data.split('/');
     
             // Extract the string into month, date and year      
             let datepart = [];
             if (operator.length > 1) {
-                datepart = date.split('/');
+                datepart = data.split('/');
             }
             let day = parseInt(datepart[0]);
             let month = parseInt(datepart[1]);
@@ -86,4 +94,4 @@ class VoluntarioBuilder {
     }
 }
 
-module.exports = new VoluntarioBuilder;
+module.exports = VoluntarioBuilder;

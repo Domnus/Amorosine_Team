@@ -1,4 +1,10 @@
 class EnderecoBuilder {
+    cep         = '';
+    rua         = '';
+    numero      = '';
+    bairro      = '';
+    complemento = '';
+
     constructor(dados) {
         this.cep         = dados?.cep;
         this.rua         = dados?.rua;
@@ -8,23 +14,23 @@ class EnderecoBuilder {
     }
 
     validaDados() {
-        if (this.dados.cep.length > 9) {
+        if (this.cep.length > 9) {
             return 'CEP inválido!';
         }
 
-        if (this.dados.rua.length > 45) {
+        if (this.rua.length > 45) {
             return 'Nome da rua muito longo!';
         }
 
-        if (this.dados.numero.length > 45) {
+        if (this.numero.length > 45) {
             return 'Número da rua muito longo!';
         }
 
-        if (this.dados.bairro.length > 45) {
+        if (this.bairro.length > 45) {
             return 'Nome do bairro muito longo!';
         }
 
-        if (this.dados.complemento.length > 45) {
+        if (this.complemento.length > 45) {
             return 'Complemento muito longo!';
         }
 
@@ -32,4 +38,4 @@ class EnderecoBuilder {
     }
 }
 
-module.exports = new EnderecoBuilder;
+module.exports = EnderecoBuilder;
