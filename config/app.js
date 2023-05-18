@@ -4,8 +4,8 @@ const multer = require('multer');
 
 const path = require('path')
 
-const acoesController = require('../js/actions/acoesAction.js')
-const voluntarioController = require('../js/actions/voluntarioAction.js')
+const acoesController = require('../js/actions/acoesAction.tsx')
+const voluntarioController = require('../js/actions/voluntarioAction.tsx')
 
 // Configurando o multer para fazer upload de arquivos para a pasta 'public/img'
 const storage = multer.diskStorage({
