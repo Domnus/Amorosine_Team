@@ -3,16 +3,16 @@ const Model = require('../template/ModelTemplate.ts')
 
 class Cidade extends Model {
 	async adiciona(cidade) {
-		if (cidade.UF) {
-			if ((cidade.UF).length === 2) {
+		if (cidade.uf) {
+			if ((cidade.uf).length === 2) {
 				return repositorio.adiciona(cidade).then(resultado => {
 				const id = resultado.insertId
 				const novaCidade = {id, ...cidade}
 				return novaCidade
 				})
 			} else {
-				console.log(cidade.UF)
-				if ((cidade.UF) === undefined || (cidade.UF).length !== 2) {
+				console.log(cidade.uf)
+				if ((cidade.uf) === undefined || (cidade.uf).length !== 2) {
 					return new Promise((resolv, reject) => reject('UF inválida'))
 				}
 			}
@@ -37,8 +37,8 @@ class Cidade extends Model {
 	}
 
 	async altera(id, valores) {
-		if (valores.UF) {
-			if ((valores.UF).length > 2 || (valores.UF).length < 2) {
+		if (valores.uf) {
+			if ((valores.uf).length > 2 || (valores.uf).length < 2) {
 				return new Promise((resolv, reject) => reject('UF inválida'))
 			}
 		}

@@ -1,4 +1,5 @@
 class EnderecoBuilder {
+    idCidade    = '';
     cep         = '';
     rua         = '';
     numero      = '';
@@ -6,6 +7,7 @@ class EnderecoBuilder {
     complemento = '';
 
     constructor(dados) {
+        this.idCidade    = dados?.idCidade;
         this.cep         = dados?.cep;
         this.rua         = dados?.rua;
         this.numero      = dados?.numero;

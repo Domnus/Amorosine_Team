@@ -5,7 +5,7 @@ class VoluntarioBuilder {
     email          = '' 
     telefone       = '' 
     sexo           = '' 
-    dataNascimento = ''   
+    dataNasc       = ''   
 
     constructor(dados) {
         this.nome           = dados?.nome;
@@ -14,7 +14,7 @@ class VoluntarioBuilder {
         this.email          = dados?.email;
         this.telefone       = dados?.telefone;
         this.sexo           = dados?.sexo;
-        this.dataNascimento = dados?.data;
+        this.dataNasc       = dados?.data;
     }
 
     validaDados() {

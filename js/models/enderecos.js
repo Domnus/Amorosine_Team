@@ -3,8 +3,8 @@ const Model = require('../template/ModelTemplate.ts')
 
 class Endereco extends Model {
     async adiciona(endereco){
-        if (endereco.CEP) {
-            if ((endereco.CEP).length !== 9 || /[a-z]/i.test(endereco.CEP)){
+        if (endereco.cep) {
+            if ((endereco.cep).length !== 9 || /[a-z]/i.test(endereco.cep)){
                 return new Promise((resolve, reject) => reject('CEP inválido'))
             } else {
                 return repositorio.adiciona(endereco).then(resultado => {
@@ -27,8 +27,8 @@ class Endereco extends Model {
     }
 
     async altera(id, valores) {
-        if (valores.CEP) {
-            if ((valores.CEP).length !== 9 || /[a-z]/i.test(valores.CEP)){
+        if (valores.cep) {
+            if ((valores.cep).length !== 9 || /[a-z]/i.test(valores.cep)){
                 return new Promise((resolve, reject) => reject('CEP inválido'))
             }  
         } 

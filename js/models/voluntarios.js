@@ -4,8 +4,8 @@ const Model = require('../template/ModelTemplate.ts')
 
 class Voluntario extends Model {
     async adiciona(voluntario){
-        if(voluntario.CPF){
-            if ((voluntario.CPF).length !== 14){
+        if(voluntario.cpf){
+            if ((voluntario.cpf).length !== 14){
                 return new Promise((resolve,reject) => reject("CPF inválido"))
             } else {
                 voluntario.dataNasc = moment().format('YYYY-MM-DD')
@@ -37,8 +37,8 @@ class Voluntario extends Model {
     }
 
     async altera(id, valores){
-        if(valores.CPF){
-            if ((valores.CPF).length !== 14)
+        if(valores.cpf){
+            if ((valores.cpf).length !== 14)
                 return new Promise((resolve,reject) => reject("CPF inválido"))
         } else {
             return new Promise((resolve, reject) => reject("CPF não informado"))
