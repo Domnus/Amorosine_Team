@@ -1,32 +1,35 @@
 const ModelVoluntarios = require("../models/voluntarios");
 const ModelEndereco = require("../models/enderecos");
 const ModelCidades = require("../models/cidades");
-require("../builders/voluntarioBuilder.tsx");
-require("../builders/enderecoBuilder.tsx");
-require("../builders/cidadeBuilder.tsx");
+const Voluntario = require("../builders/voluntarioBuilder.ts");
+const Endereco = require("../builders/enderecoBuilder.ts");
+const Cidade = require("../builders/cidadeBuilder.ts");
 
 module.exports = {
   enviarVoluntario: async (req, res) => {
     try {
+      var erro = '';
+
       /* Informações do voluntário */
-      const voluntario = new VoluntarioBuilder(req.body);
-      var erro = voluntario.validaDados();
+      const voluntario = new Voluntario(req.body);
+      erro = voluntario.validaDados();
 
       if (erro != '') {
         res.status(406).send(erro);
+        res.end();
       }
 
       /* Informações do endereço */
-      const endereco = new EnderecoBuilder(req.body);
-      var erro = endereco.validaDados();
+      const endereco = new Endereco(req.body);
+      erro = endereco.validaDados();
 
       if (erro != '') {
         res.status(406).send(erro);
       }
 
       /* Informações da cidade */
-      const cidade = new CidadeBuilder(req.body);
-      var erro = cidade.validaDados();
+      const cidade = new Cidade(req.body);
+      erro = cidade.validaDados();
 
       if (erro != '') {
         res.status(406).send(erro);

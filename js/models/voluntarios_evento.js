@@ -1,5 +1,5 @@
 const repositorio = require('../views/voluntarios_eventos')
-const Model = require('../template/ModelTemplate.tsx')
+const Model = require('../template/ModelTemplate.ts')
 
 class Voluntarios_Evento extends Model {
     async adiciona(voluntarios_evento) {

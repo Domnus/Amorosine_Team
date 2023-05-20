@@ -1,5 +1,5 @@
 const query = require("../database/queries")
-const View = require('../template/ViewTemplate.tsx')
+const View = require('../template/ViewTemplate.ts')
 
 class Voluntarios_Evento extends View {
     adiciona(voluntario) {

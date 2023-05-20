@@ -14,7 +14,7 @@ class VoluntarioBuilder {
         this.email          = dados?.email;
         this.telefone       = dados?.telefone;
         this.sexo           = dados?.sexo;
-        this.dataNascimento = dados?.dataNascimento;
+        this.dataNascimento = dados?.data;
     }
 
     validaDados() {
@@ -42,9 +42,11 @@ class VoluntarioBuilder {
             return "Sexo deve ter apenas 1 caracter!";
         }
 
+        /*
         if (!this.validaData(this.dataNascimento)) {
             return "Data inválida!";
         }
+        */
 
         return "";
     }

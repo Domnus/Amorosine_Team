@@ -1,6 +1,6 @@
 const moment = require('moment')
 const repositorio = require('../views/eventos')
-const Model = require('../template/ModelTemplate.tsx')
+const Model = require('../template/ModelTemplate.ts')
 
 class Evento extends Model {
     constructor() {

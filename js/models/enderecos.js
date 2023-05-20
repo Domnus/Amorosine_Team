@@ -1,5 +1,5 @@
 const repositorio = require("../views/enderecos")
-const Model = require('../template/ModelTemplate.tsx')
+const Model = require('../template/ModelTemplate.ts')
 
 class Endereco extends Model {
     async adiciona(endereco){

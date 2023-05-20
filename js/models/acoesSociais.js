@@ -1,5 +1,5 @@
 const repositorio = require('../views/acaoSocial')
-const Model = require('../template/ModelTemplate.tsx')
+const Model = require('../template/ModelTemplate.ts')
 
 class AcaoSocial extends Model {
 
