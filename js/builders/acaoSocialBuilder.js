@@ -1,9 +1,12 @@
-class AcaoSocialBuilder {
+const IBuilder = require('../template/BuilderTemplate');
+
+class AcaoSocialBuilder extends IBuilder {
     nome = '';
     descricao = '';
     nomeImagem = '';
 
     constructor(dados) {
+        super();
         this.nome       = dados?.body?.nomeAcao
         this.descricao  = dados?.body?.descricaoAcao
         this.nomeImagem = dados?.file.filename

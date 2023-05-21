@@ -1,4 +1,6 @@
-class VoluntarioBuilder {
+const IBuilder = require('../template/BuilderTemplate');
+
+class VoluntarioBuilder extends IBuilder {
     nome           = '' 
     sobrenome      = '' 
     cpf            = '' 

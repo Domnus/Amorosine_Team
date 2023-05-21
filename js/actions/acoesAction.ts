@@ -1,6 +1,6 @@
 const acaoSocial = require('../models/acoesSociais.js'); // Importe a classe acaoSocial
 const fs = require('fs');
-const AcaoSocialBuilder = require('../builders/acaoSocialBuilder.ts')
+const AcaoSocialBuilder = require('../builders/acaoSocialBuilder.js')
 
 module.exports = {
   enviarAcoes: async (req, res) => {

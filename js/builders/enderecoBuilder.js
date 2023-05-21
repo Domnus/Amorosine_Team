@@ -1,4 +1,6 @@
-class EnderecoBuilder {
+const IBuilder = require('../template/BuilderTemplate');
+
+class EnderecoBuilder extends IBuilder {
     idCidade    = '';
     cep         = '';
     rua         = '';

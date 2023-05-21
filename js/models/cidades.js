@@ -1,5 +1,5 @@
 const repositorio = require('../views/cidades')
-const Model = require('../template/ModelTemplate.ts')
+const Model = require('../template/ModelTemplate.js')
 
 class Cidade extends Model {
 	async adiciona(cidade) {

@@ -1,4 +1,6 @@
-class CidadeBuilder {
+const IBuilder = require('../template/BuilderTemplate');
+
+class CidadeBuilder extends IBuilder {
     cidade = '';
     uf     = '';
 

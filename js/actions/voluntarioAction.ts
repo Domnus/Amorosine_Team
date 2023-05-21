@@ -1,9 +1,9 @@
 const ModelVoluntarios = require("../models/voluntarios");
 const ModelEndereco = require("../models/enderecos");
 const ModelCidades = require("../models/cidades");
-const Voluntario = require("../builders/voluntarioBuilder.ts");
-const Endereco = require("../builders/enderecoBuilder.ts");
-const Cidade = require("../builders/cidadeBuilder.ts");
+const Voluntario = require("../builders/voluntarioBuilder.js");
+const Endereco = require("../builders/enderecoBuilder.js");
+const Cidade = require("../builders/cidadeBuilder.js");
 
 module.exports = {
   enviarVoluntario: async (req, res) => {
