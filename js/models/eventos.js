@@ -1,5 +1,5 @@
 const moment = require('moment')
-const repositorio = require('../views/eventos')
+const repositorio = require('../repositories/eventos')
 const Model = require('../template/ModelTemplate.js')
 
 class Evento extends Model {

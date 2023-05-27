@@ -13,6 +13,7 @@ module.exports = {
 
       if (erro != '') {
         res.status(406).send(erro);
+        res.end();
       }
 
       // Chama o método `adiciona` da classe acaoSocial para inserir a nova ação social no banco de dados

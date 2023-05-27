@@ -16,6 +16,7 @@ module.exports = {
 
       if (erro != '') {
         res.status(406).send(erro);
+        res.end();
       }
 
       /* Cadastro da cidade */
@@ -36,6 +37,7 @@ module.exports = {
 
       if (erro != '') {
         res.status(406).send(erro);
+        res.end();
       }
 
       /* Cadastro do endereço */

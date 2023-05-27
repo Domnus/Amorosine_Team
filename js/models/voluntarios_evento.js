@@ -1,4 +1,4 @@
-const repositorio = require('../views/voluntarios_eventos')
+const repositorio = require('../repositories/voluntarios_eventos')
 const Model = require('../template/ModelTemplate.js')
 
 class Voluntarios_Evento extends Model {

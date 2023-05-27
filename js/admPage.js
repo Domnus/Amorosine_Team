@@ -23,7 +23,7 @@ window.onload = function () {
 
 			form += `
 					<div class="box">
-						<img class="imagem" src="${urlImagem}${nomeImagem}" onmouseout="this.src = '${urlImagem}${nomeImagem}'" onmouseover="this.src = '../public/img/hugo.jpeg';" alt="Imagem da ação social">
+						<img class="imagem" src="${urlImagem}${nomeImagem}" /*onmouseout="this.src = '${urlImagem}${nomeImagem}'" onmouseover="this.src = '../public/img/hugo.jpeg'*/;" alt="Imagem da ação social">
                         <div class="data">
 							<div class="programTitle">${data[i].nome}</div>
 							<div class="donationCount">${data[i].descricao}</div>

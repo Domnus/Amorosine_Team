@@ -1,4 +1,4 @@
-class View {
+class Repository {
 
 	async adiciona(acaoSocial) {
     }
@@ -12,4 +12,4 @@ class View {
     }
 }
 
-module.exports = View;
+module.exports = Repository;

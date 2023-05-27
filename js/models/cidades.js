@@ -1,4 +1,4 @@
-const repositorio = require('../views/cidades')
+const repositorio = require('../repositories/cidades')
 const Model = require('../template/ModelTemplate.js')
 
 class Cidade extends Model {

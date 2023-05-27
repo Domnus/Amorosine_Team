@@ -26,5 +26,8 @@
     "mysql": "^2.18.1",
     "nodemon": "^2.0.12",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/node": "^20.2.5"
   }
 }

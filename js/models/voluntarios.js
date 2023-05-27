@@ -1,4 +1,4 @@
-const repositorio = require("../views/voluntarios")
+const repositorio = require("../repositories/voluntarios")
 const moment = require('moment')
 const Model = require('../template/ModelTemplate.js')
 

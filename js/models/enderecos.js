@@ -1,4 +1,4 @@
-const repositorio = require("../views/enderecos")
+const repositorio = require("../repositories/enderecos")
 const Model = require('../template/ModelTemplate.js')
 
 class Endereco extends Model {
